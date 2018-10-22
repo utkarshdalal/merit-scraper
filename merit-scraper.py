@@ -18,8 +18,8 @@ script_dir = os.path.dirname(__file__)
 rel_path = 'meritindia_data.csv'
 csv_file_path = os.path.join(script_dir, rel_path)
 
-# Change the following line to change where logs will go to
-logging.basicConfig(filename=os.path.join(script_dir, 'meritindia_data.log'))
+# Change the following line to change where logs will go to. Also change to change the log level.
+logging.basicConfig(filename=os.path.join(script_dir, 'meritindia_data.log'), level=logging.INFO)
 
 meritindia_url = 'http://www.meritindia.in'
 current_datetime = datetime.utcnow().replace(microsecond=0).isoformat()
@@ -32,6 +32,8 @@ row_values = [current_datetime]
 
 file_exists = os.path.exists(csv_file_path)
 header_matches = False
+
+logging.info('Running merit-scraper.py at %s', current_datetime)
 
 # Get data headers from website
 data_types = html_content.find_all('div', 'gen_title_sec')
@@ -62,3 +64,5 @@ with open(csv_file_path, 'r') as f:
 with open(csv_file_path, 'a') as f:
     cw = csv.writer(f)
     cw.writerow(row_values)
+
+logging.info('merit-scraper.py run started at %s completed', current_datetime)
