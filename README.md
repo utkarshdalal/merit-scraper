@@ -17,6 +17,8 @@ A python script to scrape real-time energy mix data from www.meritindia.in and s
 
 7. The job should now run, and you will see results added in /path/to/file/meritindia_data.csv.
 
+8. You should also see logging in /path/to/file/meritindia_data.log when the script runs and when it finishes.
+
 ## Caveats
 
 1. Note that this script is written in python 2.7. It should be compatible with python 3 but has not been tested.
